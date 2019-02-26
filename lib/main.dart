@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Museo',
         primarySwatch: Colors.green,
       ),
-      home: NacHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

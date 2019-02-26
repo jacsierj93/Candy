@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'AppDrawer.dart';
 import 'util.dart';
+import 'destinos_nacionales_page.dart';
+import 'destinos_inter_page.dart';
+import 'salidas_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -12,9 +15,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  GlobalKey _scaffoldstate = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final titleStyle = new TextStyle(
+      fontSize: 32,
+      color: Colors.white,
+    );
     return Scaffold(
+      key: _scaffoldstate,
       endDrawer: AppDrawer(),
       body: Stack(
         children: <Widget>[
@@ -26,192 +35,58 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/header.png"), 
+                      image: AssetImage("assets/images/header.png"),
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: CustomHeader(),
+                  child: CustomHeader(scaffoldKey: _scaffoldstate),
                 ),
               ),
-            Expanded(
+              Expanded(
                 flex: 6,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/destNac.png"), 
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: new BorderRadius.all(Radius.circular(13.0)),
-                            ),margin: new EdgeInsets.only(
-                              left: 25.0,
-                              right: 25.0,
-                              top: 25.0,
-                            ),
-                            height: 96.0,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    ImageIcon(
-                                      AssetImage("assets/images/icoInter.png"),
-                                      size: 40.0,
-                                    )
-                                  ],),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      'Destinos Internacionales',
-                                      style: TextStyle(
-                                        fontSize: 32,
-                                        color: Colors.white,
-                                      ),
-                                    
-                                    )
-                                ],)
-                              ],
-                            )
-                          )
-                      )
-                      ],
+                    BigBlock(
+                      dest: MaterialPageRoute(
+                          builder: (context) => NacHomePage()),
+                      text: Text(
+                        'Destinos Nacionales',
+                        style: titleStyle,
+                      ),
+                      background: AssetImage("assets/images/destNac.png"),
+                      ico: AssetImage("assets/images/icono-nacional.png"),
                     ),
-                  Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/destInt.png"), 
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: new BorderRadius.all(Radius.circular(13.0)),
-                            ),margin: new EdgeInsets.only(
-                              left: 25.0,
-                              right: 25.0,
-                              top: 25.0,
-                            ),
-                            height: 96.0,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    ImageIcon(
-                                      AssetImage("assets/images/icoNac.png"),
-                                      size: 40.0,
-                                    )
-                                  ],),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      'Destinos Nacionales',
-                                      style: TextStyle(
-                                        fontSize: 32,
-                                        color: Colors.white,
-                                      ),
-                                    
-                                    )
-                                ],)
-                              ],
-                            )
-                          )
-                      )
-                      ],
+                    BigBlock(
+                      dest: MaterialPageRoute(
+                          builder: (context) => InternacHomePage()),
+                      text: Text(
+                        'Destinos Internacionales',
+                        style: titleStyle,
+                      ),
+                      background: AssetImage("assets/images/destInt.png"),
+                      ico: AssetImage("assets/images/inter.png"),
                     ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/salidas.png"), 
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: new BorderRadius.all(Radius.circular(13.0)),
-                            ),
-                            margin: new EdgeInsets.only(
-                              left: 25.0,
-                              right: 25.0,
-                              top: 25.0,
-                            ),
-                            height: 96.0,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    ImageIcon(
-                                      AssetImage("assets/images/icoOut.png"),
-                                      size: 40.0,
-                                    )
-                                  ],),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      'Proximas Salidas',
-                                      style: TextStyle(
-                                        fontSize: 32,
-                                        color: Colors.white,
-                                      ),
-                                    
-                                    )
-                                ],)
-                              ],
-                            )
-                          )
-                      )
-                      ],
-                    )
-                  
+                    BigBlock(
+                      dest: MaterialPageRoute(
+                          builder: (context) => SalidasHomePage()),
+                      text: Text(
+                        'Proximas salidas',
+                        style: titleStyle,
+                      ),
+                      background: AssetImage("assets/images/salidas.png"),
+                      ico: AssetImage("assets/images/icono-salidas.png"),
+                    ),
                   ],
                 ),
               ),
             ],
           ),
-          Positioned(
-            top: 260,
-            
-            child: Container(
-              padding: EdgeInsets.only(
-                left: 25.0,
-                right: 25.0
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: new BorderRadius.all(Radius.circular(36.0)),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.black38,
-                    offset: Offset(0, 3),
-                  )
-                ]
-              ),
-              height: 50.0,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(Icons.search, color: Colors.black, size: 40.0,),
-                    Text('Busca tu destino'),
-                  ])
-
-            )
-          )
+          Searcher(),
         ],
       ),
 
-       // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

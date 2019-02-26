@@ -3,22 +3,20 @@ import 'AppDrawer.dart';
 import 'dest_detail_page.dart';
 import 'util.dart';
 
-class NacHomePage extends StatefulWidget {
+class InternacHomePage extends StatefulWidget {
   final String title;
-
   final List<List> data = List<List>.generate(
       4,
       (i) => List<RemoteData>.generate(
           2,
-          (k) => RemoteData("$k", "Nacional\n--$k--",
+          (k) => RemoteData("$k", "Internacional\n--$k--",
               MaterialPageRoute(builder: (context) => DetailsPage()))));
-
-  NacHomePage({Key key, this.title}) : super(key: key);
+  InternacHomePage({Key key, this.title}) : super(key: key);
   @override
-  _NacHomePageState createState() => _NacHomePageState();
+  _InternacHomePageState createState() => _InternacHomePageState();
 }
 
-class _NacHomePageState extends State<NacHomePage> {
+class _InternacHomePageState extends State<InternacHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +31,7 @@ class _NacHomePageState extends State<NacHomePage> {
                 child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/images/Portada_nac.png"),
+                        image: AssetImage("assets/images/portada_int.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -44,7 +42,7 @@ class _NacHomePageState extends State<NacHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Image(
-                              image: new AssetImage("assets/images/icono-nacional.png"),
+                              image: AssetImage("assets/images/Icono-inter-05.png"),
                               color: null,
                               fit: BoxFit.scaleDown,
                               alignment: Alignment.center,
@@ -55,7 +53,7 @@ class _NacHomePageState extends State<NacHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              "Destinos \n Nacionales",
+                              "Destinos \n Internacionales",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -71,17 +69,18 @@ class _NacHomePageState extends State<NacHomePage> {
               Expanded(
                 flex: 6,
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: widget.data
-                        .map((sub) => Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: sub
-                                  .map((item) => Block(
-                                      descripcion: item.nombre,
-                                      destination: item.destination))
-                                  .toList(),
-                            ))
-                        .toList()),
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: widget.data
+                      .map((sub) => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: sub
+                                .map((item) => Block(
+                                    descripcion: item.nombre,
+                                    destination: item.destination))
+                                .toList(),
+                          ))
+                      .toList(),
+                ),
               ),
             ],
           ),
