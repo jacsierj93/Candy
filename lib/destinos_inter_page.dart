@@ -19,25 +19,18 @@ class InternacHomePage extends StatefulWidget {
 class _InternacHomePageState extends State<InternacHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: AppDrawer(),
+    return CustomHeader(
+      background: AssetImage("assets/images/portada_int.png"),
       body: Stack(
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Expanded(
-                flex: 4,
-                child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/portada_int.png"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Column(
+              // Expanded(flex: 1, child: 
+              Container(
+                height: (MediaQuery.of(context).size.width * 0.61) - 120,
+                child: Column(
                       children: <Widget>[
-                        CustomHeader(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -46,7 +39,7 @@ class _InternacHomePageState extends State<InternacHomePage> {
                               color: null,
                               fit: BoxFit.scaleDown,
                               alignment: Alignment.center,
-                            )
+                            ) 
                           ],
                         ),
                         Row(
@@ -55,19 +48,17 @@ class _InternacHomePageState extends State<InternacHomePage> {
                             Text(
                               "Destinos \n Internacionales",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                fontSize: 42.0,
-                              ),
+                              style: CustomTextStyles.sectionsBig,
                             )
                           ],
                         )
                       ],
-                    )),
+                    )
               ),
+              //),
+              Searcher(),
               Expanded(
-                flex: 6,
+                flex: 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: widget.data
@@ -84,11 +75,9 @@ class _InternacHomePageState extends State<InternacHomePage> {
               ),
             ],
           ),
-          Searcher()
+          
         ],
       ),
-
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

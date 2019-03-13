@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'AppDrawer.dart';
 import 'dest_detail_page.dart';
 import 'util.dart';
 
 class NacHomePage extends StatefulWidget {
-  final String title;
+  final String title = "Destinos Nacionales";
 
   final List<List> data = List<List>.generate(
       4,
@@ -13,7 +12,7 @@ class NacHomePage extends StatefulWidget {
           (k) => RemoteData("$k", "Nacional\n--$k--",
               MaterialPageRoute(builder: (context) => DetailsPage()))));
 
-  NacHomePage({Key key, this.title}) : super(key: key);
+  //NacHomePage({Key key, this.title}) : super(key: key);
   @override
   _NacHomePageState createState() => _NacHomePageState();
 }
@@ -21,30 +20,26 @@ class NacHomePage extends StatefulWidget {
 class _NacHomePageState extends State<NacHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: AppDrawer(),
+    return CustomHeader(
+      title: widget.title,
+      background: AssetImage("assets/images/Portada_nac.png"),
       body: Stack(
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Expanded(
-                flex: 4,
-                child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/Portada_nac.png"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+              /* Expanded(
+                flex: 1,
+                child:  */Container(
+                   height: (MediaQuery.of(context).size.width * 0.61) - 120,
                     child: Column(
                       children: <Widget>[
-                        CustomHeader(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Image(
-                              image: new AssetImage("assets/images/icono-nacional.png"),
+                              image: new AssetImage(
+                                  "assets/images/icono-nacional.png"),
                               color: null,
                               fit: BoxFit.scaleDown,
                               alignment: Alignment.center,
@@ -57,24 +52,21 @@ class _NacHomePageState extends State<NacHomePage> {
                             Text(
                               "Destinos \n Nacionales",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                fontSize: 42.0,
-                              ),
+                              style: CustomTextStyles.sectionsBig
                             )
                           ],
                         )
                       ],
-                    )),
-              ),
+                    )),/* 
+              ), */
+              Searcher(),
               Expanded(
-                flex: 6,
+                flex: 1,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: widget.data
                         .map((sub) => Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: sub
                                   .map((item) => Block(
                                       descripcion: item.nombre,
@@ -85,11 +77,9 @@ class _NacHomePageState extends State<NacHomePage> {
               ),
             ],
           ),
-          Searcher()
+          /* Searcher() */
         ],
       ),
-
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

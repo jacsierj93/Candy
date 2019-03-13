@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'destinos_nacionales_page.dart';
 import 'destinos_inter_page.dart';
+import 'miviaje_page.dart';
 
 class AppDrawer extends StatefulWidget {
   @override
@@ -124,14 +125,25 @@ class _AppDrawerState extends State<AppDrawer> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Text(
-                      'Mi viaje',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        fontSize: 42,
-                        color: Colors.white,
+                    InkWell(
+                      splashColor: Colors.white54,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MiViajePage()));
+                      },
+                      child: Container(
+                        child: Text(
+                          'Mi Viaje',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 42,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

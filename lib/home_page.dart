@@ -15,78 +15,65 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  GlobalKey _scaffoldstate = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    final titleStyle = new TextStyle(
-      fontSize: 32,
-      color: Colors.white,
-    );
-    return Scaffold(
-      key: _scaffoldstate,
-      endDrawer: AppDrawer(),
+    
+    return CustomHeader(
+      background: AssetImage("assets/images/header.png"),
       body: Stack(
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Expanded(
-                flex: 4,
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/header.png"),
-                      fit: BoxFit.cover,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    height: (MediaQuery.of(context).size.width * 0.75) - 120,
+                  ),
+                  Searcher(),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        
+                        BigBlock(
+                          dest: MaterialPageRoute(
+                              builder: (context) => NacHomePage()),
+                          text: Text(
+                            'Destinos Nacionales',
+                            style: CustomTextStyles.titleWhite,
+                          ),
+                          background: AssetImage("assets/images/destNac.png"),
+                          ico: AssetImage("assets/images/icono-nacional.png"),
+                        ),
+                        BigBlock(
+                          dest: MaterialPageRoute(
+                              builder: (context) => InternacHomePage()),
+                          text: Text(
+                            'Destinos Internacionales',
+                            style: CustomTextStyles.titleWhite,
+                          ),
+                          background: AssetImage("assets/images/destInt.png"),
+                          ico: AssetImage("assets/images/inter.png"),
+                        ),
+                        BigBlock(
+                          dest: MaterialPageRoute(
+                              builder: (context) => SalidasHomePage()),
+                          text: Text(
+                            'Proximas salidas',
+                            style: CustomTextStyles.titleWhite,
+                          ),
+                          background: AssetImage("assets/images/salidas.png"),
+                          ico: AssetImage("assets/images/icono-salidas.png"),
+                        ),
+                        Container(
+                          height: 50,
+                        ),
+                      ],
                     ),
                   ),
-                  child: CustomHeader(scaffoldKey: _scaffoldstate),
-                ),
-              ),
-              Expanded(
-                flex: 6,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    BigBlock(
-                      dest: MaterialPageRoute(
-                          builder: (context) => NacHomePage()),
-                      text: Text(
-                        'Destinos Nacionales',
-                        style: titleStyle,
-                      ),
-                      background: AssetImage("assets/images/destNac.png"),
-                      ico: AssetImage("assets/images/icono-nacional.png"),
-                    ),
-                    BigBlock(
-                      dest: MaterialPageRoute(
-                          builder: (context) => InternacHomePage()),
-                      text: Text(
-                        'Destinos Internacionales',
-                        style: titleStyle,
-                      ),
-                      background: AssetImage("assets/images/destInt.png"),
-                      ico: AssetImage("assets/images/inter.png"),
-                    ),
-                    BigBlock(
-                      dest: MaterialPageRoute(
-                          builder: (context) => SalidasHomePage()),
-                      text: Text(
-                        'Proximas salidas',
-                        style: titleStyle,
-                      ),
-                      background: AssetImage("assets/images/salidas.png"),
-                      ico: AssetImage("assets/images/icono-salidas.png"),
-                    ),
-                  ],
-                ),
+                ],
               ),
             ],
           ),
-          Searcher(),
-        ],
-      ),
-
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

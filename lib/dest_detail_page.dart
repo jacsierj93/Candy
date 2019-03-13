@@ -26,22 +26,15 @@ class _DetailsPageState extends State<DetailsPage> {
               spreadRadius: 3.0)
         ]);
 
-    return Scaffold(
-      endDrawer: AppDrawer(),
+    return CustomHeader(
+      background: AssetImage("assets/images/portada_dest.png"),
       body: Stack(
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Expanded(
-                flex: 5,
-                child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/portada_dest.png"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+             Container(
+                   height: (MediaQuery.of(context).size.width * 0.75) - 120,
                     child: Padding(
                       padding: EdgeInsets.only(
                         left: 20.0,
@@ -50,7 +43,6 @@ class _DetailsPageState extends State<DetailsPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          CustomHeader(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
@@ -73,7 +65,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  fontSize: 36.0,
+                                  fontSize: 24.0,
                                 ),
                               )
                             ],
@@ -86,7 +78,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 36.0,
+                                  fontSize: 16.0,
                                 ),
                               )
                             ],
@@ -101,7 +93,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w800,
                                   color: Colors.white,
-                                  fontSize: 42.0,
+                                  fontSize: 26.0,
                                 ),
                               )
                             ],
@@ -114,7 +106,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 24.0,
+                                  fontSize: 16.0,
                                 ),
                               )
                             ],
@@ -122,24 +114,20 @@ class _DetailsPageState extends State<DetailsPage> {
                         ],
                       ),
                     )),
-              ),
               Expanded(
-                flex: 5,
+                flex: 2,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Container(
                         color: Color.fromRGBO(247, 156, 124, 1),
-                        height: 50,
+                        height: 40,
                         alignment: Alignment.center,
                         width: MediaQuery.of(context).size.width,
                         child: Text(
                           "3 dias / 4 noches",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32.0,
-                          ),
+                          style: CustomTextStyles.subtitlesWhite
                         ),
                       ),
                       Container(
@@ -150,11 +138,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         child: Text(
                           "Incluye",
                           textAlign: TextAlign.start,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black45,
-                            fontSize: 36.0,
-                          ),
+                          style: CustomTextStyles.subtitleBlack,
                         ),
                       ),
                       Expanded(
@@ -165,25 +149,25 @@ class _DetailsPageState extends State<DetailsPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Container(
-                                  height: 50,
+                                  height: 40,
                                   width:
                                       MediaQuery.of(context).size.width * 0.45,
                                   alignment: Alignment.center,
                                   decoration: decoration,
                                   child: Text("Desayuno",
                                       style: TextStyle(
-                                        fontSize: 24,
+                                        fontSize: 13,
                                       )),
                                 ),
                                 Container(
-                                  height: 50,
+                                  height: 40,
                                   width:
                                       MediaQuery.of(context).size.width * 0.45,
                                   alignment: Alignment.center,
                                   decoration: decoration,
                                   child: Text("Posada",
                                       style: TextStyle(
-                                        fontSize: 24,
+                                        fontSize: 13,
                                       )),
                                 )
                               ],
@@ -192,25 +176,52 @@ class _DetailsPageState extends State<DetailsPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Container(
-                                  height: 50,
+                                  height: 40,
                                   width:
                                       MediaQuery.of(context).size.width * 0.45,
                                   alignment: Alignment.center,
                                   decoration: decoration,
                                   child: Text("N noches",
                                       style: TextStyle(
-                                        fontSize: 24,
+                                        fontSize: 13,
                                       )),
                                 ),
                                 Container(
-                                  height: 50,
+                                  height: 40,
                                   width:
                                       MediaQuery.of(context).size.width * 0.45,
                                   alignment: Alignment.center,
                                   decoration: decoration,
                                   child: Text("Asistencia ",
                                       style: TextStyle(
-                                        fontSize: 24,
+                                        fontSize: 13,
+                                      )),
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Container(
+                                  height: 40,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.45,
+                                  alignment: Alignment.center,
+                                  decoration: decoration,
+                                  child: Text("N noches",
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                      )),
+                                ),
+                                Container(
+                                  height: 40,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.45,
+                                  alignment: Alignment.center,
+                                  decoration: decoration,
+                                  child: Text("Asistencia ",
+                                      style: TextStyle(
+                                        fontSize: 13,
                                       )),
                                 )
                               ],
@@ -242,7 +253,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 32.0,
+                              fontSize: 15.0,
                             ),
                           ),
                         ),
@@ -420,9 +431,7 @@ class _DetailsPageState extends State<DetailsPage> {
             visible: widget.isVisible,
           )
         ],
-      ),
-
-      // This trailing comma makes auto-formatting nicer for build methods.
+      )
     );
   }
 }
